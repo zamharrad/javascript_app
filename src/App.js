@@ -4,7 +4,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import NavBar from './components/NavBar';
 import Home from './components/Home';
 import UserLists from './components/UserLists'
-import CounterRedux from './components/Counter'
+import CounterRedux from './components/CounterRedux'
 import Employees from './components/Employees';
 
 function App (){

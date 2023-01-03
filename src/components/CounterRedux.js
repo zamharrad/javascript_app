@@ -1,27 +1,30 @@
 import React, {useState} from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { increment, decrement, incrementBy } from "../redux/features/counter.feature";
 
+
+
+
+// get the data form redux store
 let CounterRedux = () => {
+   let counterState = useSelector( (state => {
+    return state['counter']
+   }))
 
-    let  [state, setState] = useState({
-        count : 0
-    });
+   let dispatch =  useDispatch();
+
+   let {count} = counterState;
 
     let clickIncrement = () => {
-        setState( {
-            count: state.count +1
-        })
+        dispatch(increment());
     }
 
     let clickDecrement = () => {
-        setState( {
-            count: state.count -1
-        })
+        dispatch(decrement());
     }
 
     let clickIncrementBy = () => {
-        setState( {
-            count: state.count + 5
-        })
+       dispatch(incrementBy(5));
     }
 
     return (
@@ -31,7 +34,7 @@ let CounterRedux = () => {
                     <div className="col-md-4">
                         <div className="card">
                             <div className="card-body">
-                                <p className="h1" > Count :{state.count}</p>
+                                <p className="h1" > Count :{count}</p>
                                 <button className="btn btn-success m-1" onClick={clickIncrement}>Increment</button>
                                 <button className="btn btn-danger m-1" onClick={clickDecrement}>Decrement</button>
                                 <button className="btn btn-warning m-1" onClick={clickIncrementBy}>Increment by 5</button>
