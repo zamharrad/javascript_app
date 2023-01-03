@@ -4,7 +4,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import NavBar from './components/NavBar';
 import Home from './components/Home';
 import UserLists from './components/UserLists'
-import Counter from './components/Counter'
+import CounterRedux from './components/Counter'
 import Employees from './components/Employees';
 
 function App (){
@@ -13,7 +13,7 @@ function App (){
     <NavBar/>
     <Routes>
       <Route path={'/'} element={<Home/>}/>
-      <Route path={'/counter'} element={<Counter/>}/>
+      <Route path={'/counter'} element={<CounterRedux/>}/>
       <Route path={'/employees'} element={<Employees/>}/>
       <Route path={'/users'} element={<UserLists/>}/>
     </Routes>

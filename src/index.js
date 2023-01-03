@@ -5,6 +5,9 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 
+// store dependencies
+import { Provider } from 'react-redux';
+import store from './redux/store';
 // font awesome icon
 
 // Bootstrap 
@@ -18,7 +21,9 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.Fragment>
     <BrowserRouter>
-        <App></App>                                   
+        <Provider store={store}>
+          <App></App>
+          </Provider>                                  
       </BrowserRouter>
     
   </React.Fragment>

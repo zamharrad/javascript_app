@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 
-let Counter = () => {
+let CounterRedux = () => {
 
     let  [state, setState] = useState({
         count : 0
@@ -45,4 +45,4 @@ let Counter = () => {
     )
 }
 
-export default Counter;
+export default CounterRedux;
