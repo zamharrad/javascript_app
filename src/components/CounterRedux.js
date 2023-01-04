@@ -41,7 +41,6 @@ let CounterRedux = () => {
                             </div>
                         </div>
                     </div>
-                    
                 </div>
             </div>
         </React.Fragment>
