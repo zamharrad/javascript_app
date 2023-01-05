@@ -1,32 +1,29 @@
 import React, { useState ,setState} from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { updateSelected } from "../redux/features/employees.feature";
 import { EmployeeServices } from "../services/EmployeeServices";
 
 let EmployeesRedux = () => {
 
-    let [state, setState] = useState({
-        employees: EmployeeServices.getAllEmployees()
-    });
+    let dispatch = useDispatch();
+    // let [state, setState] = useState({
+    //     employees: EmployeeServices.getAllEmployees()
+    // });
 
-    let { employees } = state;
+    // get the store data from redux
+    let employeeState = useSelector((store) => {
+        return store['employees']
+    })
 
-    let updateSelected = (empId) => {
-        let selectedEmployee = employees.map(employee => {
-            if(employee.id === empId){
-                return {
-                    ...employee,
-                    isSelected : !employee.isSelected
-                }                              
-            }
-            else return employee;
-        });
-        setState ( {
-            ...state,employees: selectedEmployee
-        })
+    let { employees } = employeeState;
+
+    let changeUpdateSelected = (empId) => {
+       dispatch(updateSelected(empId))
     };
 
     return (
         <React.Fragment>
-            <pre>{JSON.stringify(employees)}</pre>
+            {/* <pre>{JSON.stringify(employees)}</pre> */}
             <div className="container mt-3">
                 <div className="row">
                     <div className="col">
@@ -42,7 +39,7 @@ let EmployeesRedux = () => {
                                 employees.map(employee => {
                                     return (
                                         <li key={employee.id} className='list-group-item'>
-                                            <input onChange={() => updateSelected(employee.id)} className="form-check-input me-2" type='checkbox' />
+                                            <input checked={employee.isSelected} onChange={() => changeUpdateSelected(employee.id)} className="form-check-input me-2" type='checkbox' />
                                             {employee.name}
                                         </li>
                                     )
