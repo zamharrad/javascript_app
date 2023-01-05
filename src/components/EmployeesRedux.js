@@ -1,7 +1,7 @@
-import React, { useState, setState } from "react";
+import React, { useState ,setState} from "react";
 import { EmployeeServices } from "../services/EmployeeServices";
 
-let Employees = () => {
+let EmployeesRedux = () => {
 
     let [state, setState] = useState({
         employees: EmployeeServices.getAllEmployees()
@@ -11,22 +11,22 @@ let Employees = () => {
 
     let updateSelected = (empId) => {
         let selectedEmployee = employees.map(employee => {
-            if (employee.id === empId) {
+            if(employee.id === empId){
                 return {
                     ...employee,
-                    isSelected: !employee.isSelected
-                }
+                    isSelected : !employee.isSelected
+                }                              
             }
             else return employee;
         });
-        setState({
-            ...state, employees: selectedEmployee
+        setState ( {
+            ...state,employees: selectedEmployee
         })
     };
 
     return (
         <React.Fragment>
-            {/* <pre>{JSON.stringify(employees)}</pre> */}
+            <pre>{JSON.stringify(employees)}</pre>
             <div className="container mt-3">
                 <div className="row">
                     <div className="col">
@@ -49,6 +49,7 @@ let Employees = () => {
                                 })
                             }
                         </ul>
+
                     </div>
                     <div className="col-md-6">
                         {employees.length > 0 &&
@@ -59,20 +60,23 @@ let Employees = () => {
                                         <div className="card-body">
                                             <ul className="list-group">
                                                 <li className="list-group-item">
-                                                    Name : <span className="fw-bold"> {employee.name}</span> <br></br>
-                                                </li>
-                                                <li className="list-group-item">
-                                                    Name : <span className="fw-bold"> {employee.email}</span> <br></br>
+                                                    Name : <span className="fw-bold"> {employee.name}</span>
                                                 </li>
                                             </ul>
                                         </div>
                                     </div>
-                                )})}
+
+                                    
+                                )
+                            })}
                     </div>
                 </div>
+
+
+
             </div>
         </React.Fragment>
     )
 }
 
-export default Employees;
+export default EmployeesRedux;

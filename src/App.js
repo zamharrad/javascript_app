@@ -6,6 +6,7 @@ import Home from './components/Home';
 import UserLists from './components/UserLists'
 import CounterRedux from './components/CounterRedux'
 import Employees from './components/Employees';
+import EmployeesRedux from './components/EmployeesRedux';
 
 function App (){
  return (
@@ -14,7 +15,8 @@ function App (){
     <Routes>
       <Route path={'/'} element={<Home/>}/>
       <Route path={'/counter'} element={<CounterRedux/>}/>
-      <Route path={'/employees'} element={<Employees/>}/>
+      <Route path={'/employees'} element={<EmployeesRedux/>}/>
+      {/* <Route path={'/employees'} element={<Employees/>}/> */}
       <Route path={'/users'} element={<UserLists/>}/>
     </Routes>
   </React.Fragment>
